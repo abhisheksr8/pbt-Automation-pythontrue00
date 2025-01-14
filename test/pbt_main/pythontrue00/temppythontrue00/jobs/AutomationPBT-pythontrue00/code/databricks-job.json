@@ -1,0 +1,88 @@
+{
+  "fabric_id" : "3",
+  "components" : [ {
+    "PipelineComponent" : {
+      "path" : "dbfs:/FileStore/prophecy/artifacts/regression-dev/cp/__PROJECT_ID_PLACEHOLDER__/__PROJECT_RELEASE_VERSION_PLACEHOLDER__/pipeline/AutomationPBT_pythontrue00-1.0-py3-none-any.whl",
+      "nodeName" : "AutomationPBT-pythontrue00",
+      "id" : "AmtQ7ecdIkaGhAHdoWf47",
+      "language" : "python",
+      "pipelineId" : "pipelines/AutomationPBT-pythontrue00"
+    }
+  } ],
+  "request" : {
+    "format" : "MULTI_TASK",
+    "name" : "AutomationPBT-pythontrue00",
+    "job_clusters" : [ {
+      "job_cluster_key" : "AutomationPBT-pythontrue00_default_small",
+      "new_cluster" : {
+        "ssh_public_keys" : [ ],
+        "spark_version" : "14.3.x-scala2.12",
+        "node_type_id" : "i3.xlarge",
+        "num_workers" : 1,
+        "custom_tags" : { },
+        "init_scripts" : [ ],
+        "spark_conf" : {
+          "spark.prophecy.metadata.fabric.id" : "3",
+          "spark.prophecy.metadata.job.uri" : "__PROJECT_ID_PLACEHOLDER__/jobs/AutomationPBT-pythontrue00",
+          "spark.prophecy.metadata.is.interactive.run" : "false",
+          "spark.prophecy.project.id" : "__PROJECT_ID_PLACEHOLDER__",
+          "spark.prophecy.metadata.user.id" : "4",
+          "spark.prophecy.tasks" : "H4sIAAAAAAAAAKtWciwtyc9NLMnMzwtwCtEtqCzJyM8rKSpNNTBQslIqyCxIzcnMSy3Wx6OsFgCuqWUSRQAAAA==",
+          "spark.prophecy.metadata.job.branch" : "__PROJECT_RELEASE_VERSION_PLACEHOLDER__",
+          "spark.prophecy.metadata.url" : "__PROPHECY_URL_PLACEHOLDER__",
+          "spark.prophecy.execution.metrics.disabled" : "false",
+          "spark.prophecy.execution.service.url" : "wss://regression.cloud.prophecy.io/execution/eventws",
+          "spark.databricks.isv.product" : "prophecy"
+        },
+        "spark_env_vars" : {
+          "PYSPARK_PYTHON" : "/databricks/python3/bin/python3"
+        },
+        "runtime_engine" : "standard",
+        "aws_attributes" : {
+          "first_on_demand" : 1,
+          "availability" : "SPOT_WITH_FALLBACK",
+          "zone_id" : "auto",
+          "spot_bid_price_percent" : 100
+        },
+        "data_security_mode" : "SINGLE_USER"
+      }
+    } ],
+    "email_notifications" : {
+      "on_start" : [ "abhisheks+e2etests@prophecy.io" ],
+      "on_failure" : [ "abhisheks+e2etests@prophecy.io" ]
+    },
+    "tasks" : [ {
+      "task_key" : "AutomationPBT-pythontrue00",
+      "job_cluster_key" : "AutomationPBT-pythontrue00_default_small",
+      "python_wheel_task" : {
+        "package_name" : "AutomationPBT_pythontrue00",
+        "entry_point" : "main",
+        "parameters" : [ "-i", "default", "-O", "{}" ]
+      },
+      "libraries" : [ {
+        "maven" : {
+          "coordinates" : "io.prophecy:prophecy-libs_2.12:3.5.0-8.8.0-SNAPSHOT",
+          "repo" : "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+        }
+      }, {
+        "pypi" : {
+          "package" : "prophecy-libs==1.9.30"
+        }
+      }, {
+        "whl" : "dbfs:/FileStore/prophecy/artifacts/regression-dev/cp/__PROJECT_ID_PLACEHOLDER__/__PROJECT_RELEASE_VERSION_PLACEHOLDER__/pipeline/AutomationPBT_pythontrue00-1.0-py3-none-any.whl"
+      } ],
+      "email_notifications" : { }
+    } ],
+    "max_concurrent_runs" : 1,
+    "schedule" : {
+      "quartz_cron_expression" : "0 0 0 1/1 * ? 2090",
+      "timezone_id" : "UTC",
+      "pause_status" : "UNPAUSED"
+    }
+  },
+  "cluster_mode" : {
+    "clusterMode" : "Single"
+  },
+  "secret_scope" : "prophecy_jobs_5",
+  "sorted_processes" : [ "AmtQ7ecdIkaGhAHdoWf47" ]
+}
